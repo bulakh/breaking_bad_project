@@ -1,10 +1,9 @@
 import React from "react";
+import Welcome from "./pages/Welcome/Welcome";
 
 const App = () => {
   return (
-    <div>
-      Breaking bad
-    </div>
+    <Welcome />
   );
 }
 
