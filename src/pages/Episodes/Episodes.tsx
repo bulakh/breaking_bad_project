@@ -1,13 +1,13 @@
 import React, {FC} from "react";
 import Navbar from "../../components/Navbar";
 
-const Characters: FC<{}> = () => {
+const Episodes: FC = () => {
   return (
     <>
       <Navbar />
-      <h1>Characters</h1>
+      <h1>Episodes</h1>
     </>
   );
 }
 
-export default Characters;
+export default Episodes;
