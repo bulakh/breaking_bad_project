@@ -1,12 +1,13 @@
 import React, {FC} from "react";
 import Navbar from "../../components/Navbar";
 
-const Main: FC = () => {
+const Deathes: FC = () => {
   return (
     <>
       <Navbar />
+      <h1>Deathes</h1>
     </>
   );
 }
 
-export default Main;
+export default Deathes;

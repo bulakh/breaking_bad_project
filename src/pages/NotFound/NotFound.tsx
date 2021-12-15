@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import { useNavigate } from "react-router";
 import { AppRoute } from "../../const";
 
-const NotFound: FC<{}> = () => {
+const NotFound: FC = () => {
   const navigate = useNavigate();
 
   const clickHandler = () => {

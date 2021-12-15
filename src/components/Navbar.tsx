@@ -11,6 +11,15 @@ const Navbar: FC = () => {
       <li>
         <Link to={AppRoute.CHARACTERS}>Characters</Link>
       </li>
+      <li>
+        <Link to={AppRoute.EPISODES}>Episodes</Link>
+      </li>
+      <li>
+        <Link to={AppRoute.QUOTES}>Quotes</Link>
+      </li>
+      <li>
+        <Link to={AppRoute.DEATHES}>Deathes</Link>
+      </li>
     </ul>
   );
 }
