@@ -6,8 +6,8 @@ const Welcome:FC  = () => {
   const navigate = useNavigate();
 
   const clickHandler = () => {
-    navigate(AppRoute.CHARACTERS)
-  }
+    navigate(`main/${AppRoute.CHARACTERS}`);
+  };
 
 
   return (

@@ -1,4 +1,5 @@
 import React, {FC} from "react";
+import { useNavigate } from "react-router-dom";
 import { ICharacter } from "../types/types";
 
 interface CharacterItemProps {
@@ -6,12 +7,19 @@ interface CharacterItemProps {
 }
 
 const CharacterItem: FC<CharacterItemProps> = ({character}) => {
-  return (
-    <div>
-        {character.char_id}. {character.name}
+  const navigate = useNavigate();
 
-        <img style={{width: '100px'}} src={character.img} alt={character.name} />
+  const clickHandler = () => {
+    navigate(`${character.char_id}`);
+  };
+
+  return (
+    <div onClick={clickHandler} style={{width: '100px', border: '1px solid black', margin: '10px'}}>
+      <img style={{width: '100px'}} src={character.img} alt={character.name} />
+
+      <p>{character.char_id}. {character.name}</p>
     </div>
+    
   );
 }
 
