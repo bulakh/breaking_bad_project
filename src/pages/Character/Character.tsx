@@ -12,6 +12,7 @@ const Character: FC = () => {
   useEffect(() => {
     fetchCharacter(setCharacter, id);
   }, [id]);
+  
 
   return (
     <>
