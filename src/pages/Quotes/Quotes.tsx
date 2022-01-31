@@ -1,16 +1,25 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useEffect} from "react";
+import { observer } from "mobx-react";
 import QuoteItem from "../../components/QuoteItem";
 import List from "../../components/UI/List";
-import { fetchQuotes } from "../../hooks/useFetch";
 import { IQuote } from "../../types/types";
+import storeApp from "../../store/storeApp";
 
 const Quotes: FC = () => {
 
-  const [quotes, setQuotes] = useState<IQuote[]>([]);
+  const {quotes, setQuotes, isLoading} = storeApp;
 
   useEffect(() => {
-    fetchQuotes(setQuotes);
-  }, [])
+    if (quotes.length === 0) {
+      setQuotes();
+    }
+  }, [quotes, setQuotes]);
+
+
+  
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  }
 
   return (
     <>
@@ -24,4 +33,4 @@ const Quotes: FC = () => {
   );
 }
 
-export default Quotes;
+export default observer(Quotes);

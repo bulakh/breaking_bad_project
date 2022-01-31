@@ -1,16 +1,24 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useEffect} from "react";
+import { observer } from "mobx-react";
 import EpisodeItem from "../../components/EpisodeItem";
 import List from "../../components/UI/List";
-import { fetchEpisodes } from "../../hooks/useFetch";
+import storeApp from "../../store/storeApp";
 import { IEpisode } from "../../types/types";
 
 const Episodes: FC = () => {
-
-  const [episodes, setEpisodes] = useState<IEpisode[]>([]);
+  const {episodes, setEpisodes, isLoading} = storeApp;
 
   useEffect(() => {
-    fetchEpisodes(setEpisodes);
-  }, [])
+    if (episodes.length === 0) {
+      setEpisodes();
+    }
+  }, [episodes, setEpisodes]);
+
+
+  
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  }
 
   return (
     <>
@@ -24,4 +32,4 @@ const Episodes: FC = () => {
   );
 }
 
-export default Episodes;
+export default observer(Episodes);

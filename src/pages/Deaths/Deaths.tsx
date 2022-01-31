@@ -1,16 +1,25 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useEffect} from "react";
+import { observer } from "mobx-react";
 import DeathItem from "../../components/DeathItem";
 import List from "../../components/UI/List";
-import { fetchDeaths } from "../../hooks/useFetch";
+import storeApp from "../../store/storeApp";
 import { IDeath } from "../../types/types";
 
 const Deaths: FC = () => {
 
-  const [deaths, setDeathes] = useState<IDeath[]>([]);
+  const {deaths, setDeaths, isLoading} = storeApp;
 
   useEffect(() => {
-    fetchDeaths(setDeathes);
-  }, [])
+    if (deaths.length === 0) {
+      setDeaths();
+    }
+  }, [deaths, setDeaths]);
+
+
+
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  }
 
   return (
     <>
@@ -24,4 +33,4 @@ const Deaths: FC = () => {
   );
 }
 
-export default Deaths;
+export default observer(Deaths);

@@ -24,6 +24,8 @@ const Characters: FC = () => {
 
   const filteredCharacters = findCharacter(find, characters);
 
+
+  
   if (isLoading) {
     return <h2>Loading...</h2>
   }
