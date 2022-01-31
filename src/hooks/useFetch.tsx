@@ -1,6 +1,6 @@
 import axios from "axios";
-import { URL_CHARACTER, URL_CHARACTERS, URL_EPISODES } from "../const";
-import { ICharacter, IEpisode } from "../types/types";
+import { URL_CHARACTER, URL_CHARACTERS, URL_DEATHS, URL_EPISODES, URL_QUOTES } from "../const";
+import { ICharacter, IDeath, IEpisode, IQuote } from "../types/types";
 
 export async function fetchCharacters<T>():Promise<T | null> {
     try {
@@ -30,4 +30,22 @@ export async function fetchEpisodes(setState: Function) {
     } catch (e) {
       alert(`Error: ${e}`);
     }
+}
+
+export async function fetchQuotes(setState: Function) {
+  try {
+    const response = await axios.get<IQuote[]>(URL_QUOTES);
+    setState(response.data);
+  } catch (e) {
+    alert(`Error: ${e}`);
+  }
+}
+
+export async function fetchDeaths(setState: Function) {
+  try {
+    const response = await axios.get<IDeath[]>(URL_DEATHS);
+    setState(response.data);
+  } catch (e) {
+    alert(`Error: ${e}`);
+  }
 }

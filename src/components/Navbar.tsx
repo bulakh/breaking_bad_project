@@ -18,7 +18,7 @@ const Navbar: FC = () => {
         <Link to={AppRoute.QUOTES}>Quotes</Link>
       </li>
       <li>
-        <Link to={AppRoute.DEATHES}>Deathes</Link>
+        <Link to={AppRoute.DEATHS}>Deathes</Link>
       </li>
     </ul>
   );
