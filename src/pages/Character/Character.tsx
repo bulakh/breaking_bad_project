@@ -1,6 +1,7 @@
 import React, {FC, useEffect, useState} from "react";
 import { useParams } from "react-router";
-import { fetchCharacter } from "../../hooks/useFetch";
+import { fetchData } from "../../api/api";
+import { Url } from "../../const";
 import { ICharacter } from "../../types/types";
 
 
@@ -10,7 +11,13 @@ const Character: FC = () => {
   const [character, setCharacter] = useState<ICharacter | null>(null);
 
   useEffect(() => {
-    fetchCharacter(setCharacter, id);
+    async function fetchCharacter() {
+      const result = await fetchData<ICharacter[]>(`${Url.CHARACTERS}/${id}`);
+      if (result) {
+        setCharacter(result[0]);
+      }
+    }
+    fetchCharacter();
   }, [id]);
   
 

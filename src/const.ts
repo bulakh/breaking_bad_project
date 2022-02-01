@@ -10,7 +10,6 @@ export const AppRoute = {
 
 export const enum Url {
     CHARACTERS = 'https://www.breakingbadapi.com/api/characters',
-    CHARACTER = 'https://www.breakingbadapi.com/api/character',
     EPISODES = 'https://www.breakingbadapi.com/api/episodes',
     QUOTES  = 'https://www.breakingbadapi.com/api/quotes',
     DEATHS = 'https://www.breakingbadapi.com/api/deaths',
