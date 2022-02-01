@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { fetchCharacters, fetchDeaths, fetchEpisodes, fetchQuotes } from "../hooks/useFetch";
+import { fetchData } from "../api/api";
+import { Url } from "../const";
 import { ICharacter, IDeath, IEpisode, IQuote } from "../types/types"
 
 
@@ -13,53 +14,35 @@ class Store {
     episodes: IEpisode[] = [];
     quotes: IQuote[] = [];
     deaths: IDeath[] = [];
-  
-    setCharacters = async () => {
+
+    private setData = async <T>(url: string):Promise<T | []> => {
       try {
         this.isLoading = true;
-        const result = await fetchCharacters<ICharacter[]>();
+        const result = await fetchData<T>(url);
         if (result) {
-          this.characters = result;
+          return result;
+        } else {
+          return [];
         }
       } finally {
         this.isLoading = false;
       }
+    }
+
+    setCharacters = async () => {
+      this.characters = await this.setData<ICharacter[]>(Url.CHARACTERS).then(data => data);
     }
 
     setEpisodes = async () => {
-      try {
-        this.isLoading = true;
-        const result = await fetchEpisodes<IEpisode[]>();
-        if (result) {
-          this.episodes = result;
-        }
-      } finally {
-        this.isLoading = false;
-      }
+      this.episodes = await this.setData<IEpisode[]>(Url.EPISODES).then(data => data);
     }
 
     setQuotes = async () => {
-      try {
-        this.isLoading = true;
-        const result = await fetchQuotes<IQuote[]>();
-        if (result) {
-          this.quotes = result;
-        }
-      } finally {
-        this.isLoading = false;
-      }
+      this.quotes = await this.setData<IQuote[]>(Url.QUOTES).then(data => data);
     }
 
     setDeaths = async () => {
-      try {
-        this.isLoading = true;
-        const result = await fetchDeaths<IDeath[]>();
-        if (result) {
-          this.deaths = result;
-        }
-      } finally {
-        this.isLoading = false;
-      }
+      this.deaths = await this.setData<IDeath[]>(Url.DEATHS).then(data => data);
     }
 }
 
