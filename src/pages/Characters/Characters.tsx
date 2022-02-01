@@ -22,7 +22,7 @@ const Characters: FC = () => {
     setFind(e.target.value);
   };
 
-  const filteredCharacters = findCharacter(find, characters);
+  const filteredCharacters = findCharacter<ICharacter>(find, characters);
 
 
   
