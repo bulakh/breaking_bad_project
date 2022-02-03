@@ -4,6 +4,7 @@ import QuoteItem from "../../components/QuoteItem";
 import List from "../../components/UI/List";
 import { IQuote } from "../../types/types";
 import storeApp from "../../store/storeApp";
+import Container from "../../components/UI/Container";
 
 const Quotes: FC = () => {
 
@@ -16,20 +17,20 @@ const Quotes: FC = () => {
   }, [quotes, setQuotes]);
 
 
-  
+
   if (isLoading) {
     return <h2>Loading...</h2>
   }
 
   return (
-    <>
+    <Container>
       <h1>Quotes</h1>
 
       <List
-        items={quotes} 
+        items={quotes}
         renderItem={(quote: IQuote) => <QuoteItem quote={quote} key={quote.quote_id}/>}
       />
-    </>
+    </Container>
   );
 }
 

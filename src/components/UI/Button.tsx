@@ -1,26 +1,35 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Theme } from "../../const";
+import { Colors, Fonts } from "../../styles/variables";
 
 interface Props {
-  theme: Theme;
   onClick: () => void;
 }
 
 const StyledButton = styled.button`
-  background-color: ${({theme}) => theme === Theme.dark ? 'green' : 'blue'};
-  color: white;
-  padding: 20px;
+  background: transparent;
+  color: ${Colors.white};
+  border: 1px solid ${Colors.white};
+  padding: 8px 69px;
+
+  font-family: ${Fonts.cooper};
+  font-size: 18px;
+
+  &:hover {
+    background: ${Colors.white};
+    color: ${Colors.background};
+
+    cursor: pointer;
+  }
 `
 
 const Button: FC<Props> = ({
     onClick,
-    theme,
     children,
   }) => {
 
   return (
-    <StyledButton onClick={onClick} theme={theme}>{children}</StyledButton>
+    <StyledButton onClick={onClick}>{children}</StyledButton>
   );
 }
 

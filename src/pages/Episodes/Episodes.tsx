@@ -4,6 +4,7 @@ import EpisodeItem from "../../components/EpisodeItem";
 import List from "../../components/UI/List";
 import storeApp from "../../store/storeApp";
 import { IEpisode } from "../../types/types";
+import Container from "../../components/UI/Container";
 
 const Episodes: FC = () => {
   const {episodes, setEpisodes, isLoading} = storeApp;
@@ -15,20 +16,20 @@ const Episodes: FC = () => {
   }, [episodes, setEpisodes]);
 
 
-  
+
   if (isLoading) {
     return <h2>Loading...</h2>
   }
 
   return (
-    <>
+    <Container>
       <h1>Episodes</h1>
 
       <List
-        items={episodes} 
+        items={episodes}
         renderItem={(episode: IEpisode) => <EpisodeItem episode={episode} key={episode.episode_id}/>}
       />
-    </>
+    </Container>
   );
 }
 

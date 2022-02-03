@@ -4,6 +4,7 @@ import DeathItem from "../../components/DeathItem";
 import List from "../../components/UI/List";
 import storeApp from "../../store/storeApp";
 import { IDeath } from "../../types/types";
+import Container from "../../components/UI/Container";
 
 const Deaths: FC = () => {
 
@@ -22,14 +23,14 @@ const Deaths: FC = () => {
   }
 
   return (
-    <>
+    <Container>
       <h1>Deathes</h1>
 
       <List
-        items={deaths} 
+        items={deaths}
         renderItem={(death: IDeath) => <DeathItem death={death} key={death.death_id}/>}
       />
-    </>
+    </Container>
   );
 }
 

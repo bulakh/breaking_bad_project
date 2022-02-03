@@ -2,8 +2,8 @@ import React, {FC} from "react";
 import { useNavigate } from "react-router";
 import Button from "../../components/UI/Button";
 import Container from "../../components/UI/Container";
-import { AppRoute, Theme } from "../../const";
-import { Title } from "./Welcome.styles";
+import { AppRoute } from "../../const";
+import { SubTitle, Title } from "./Welcome.styles";
 
 const Welcome:FC  = () => {
   const navigate = useNavigate();
@@ -13,10 +13,13 @@ const Welcome:FC  = () => {
   };
 
   return (
-      <Container flex>
-        <Title>Breaking bad info</Title>
+      <Container flex center all>
+        <Container>
+          <Title>Breaking bad</Title>
+          <SubTitle>info</SubTitle>
+        </Container>
 
-        <Button onClick={clickHandler} theme={Theme.dark}>Let's go!</Button>
+        <Button onClick={clickHandler}>Let's go!</Button>
       </Container>
   );
 }

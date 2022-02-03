@@ -1,5 +1,6 @@
 export const enum Colors {
   background = '#44954C',
+  white = '#FFFFFF'
 }
 
 export const enum Fonts {

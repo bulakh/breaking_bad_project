@@ -8,17 +8,15 @@ const General = css`
   font-family: ${Fonts.cooper};
 `
 
-export const Title = styled.h1`
-  ${General}
-
-  font-size: 120px;
+export const NavList = styled.ul`
+  margin: 200px 20px;
 `
 
-export const SubTitle = styled.p`
-  ${General}
+export const NavItem = styled.li`
+  margin: 20px;
 
-  margin-bottom: 152px;
-
-  font-size: 55px;
-  text-align: right;
+  & a {
+    color: ${Colors.white};
+  }
 `
+

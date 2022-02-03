@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     background-color: ${Colors.background};
-    font-family: ${Fonts.cooper};
+    font-family: ${Fonts.helvetica};
   }
 
   a {

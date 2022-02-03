@@ -5,12 +5,14 @@ import List from "../../components/UI/List";
 import { findCharacter } from "../../hooks/useFilter";
 import storeApp from "../../store/storeApp";
 import { ICharacter } from "../../types/types";
+import Container from "../../components/UI/Container";
+import PageTitle from "../../components/UI/PageTitle";
 
 
 const Characters: FC = () => {
   const [find, setFind] = useState<string>('');
   const {characters, setCharacters, isLoading} = storeApp;
-  
+
   useEffect(() => {
     if (characters.length === 0) {
       setCharacters();
@@ -25,23 +27,23 @@ const Characters: FC = () => {
   const filteredCharacters = findCharacter<ICharacter>(find, characters);
 
 
-  
+
   if (isLoading) {
     return <h2>Loading...</h2>
   }
 
   return (
-    <>
-      <h1>Characters</h1>
+    <Container>
+      <PageTitle>Characters</PageTitle>
 
       <input onChange={changeInputHandler} type="text" value={find} placeholder="Search character..."/>
 
-      <List 
+      <List
         flex
-        items={find === '' ? characters : filteredCharacters} 
+        items={find === '' ? characters : filteredCharacters}
         renderItem={(character: ICharacter) => <CharacterItem character={character} key={character.char_id} />}
       />
-    </>
+    </Container>
   );
 };
 
