@@ -14,3 +14,8 @@ export const enum Url {
     QUOTES  = 'https://www.breakingbadapi.com/api/quotes',
     DEATHS = 'https://www.breakingbadapi.com/api/deaths',
 }
+
+export const enum Theme {
+  light = 'light',
+  dark = 'dark',
+}

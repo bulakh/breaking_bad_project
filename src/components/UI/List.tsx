@@ -6,11 +6,11 @@ interface ListProps<T> {
     renderItem: (item: T) => ReactNode;
 }
 
-export default  function List<T>(props: ListProps<T>) {
+export default function List<T>(props: ListProps<T>) {
 
     return (
         <>
-            {props.flex 
+            {props.flex
                 ? <div style={{display:'flex', flexWrap: 'wrap'}}>
                     {props.items.map(props.renderItem)}
                 </div>

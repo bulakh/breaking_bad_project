@@ -19,7 +19,7 @@ const Character: FC = () => {
     }
     fetchCharacter();
   }, [id]);
-  
+
 
   return (
     <>

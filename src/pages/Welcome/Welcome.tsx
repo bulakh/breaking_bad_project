@@ -1,6 +1,9 @@
 import React, {FC} from "react";
 import { useNavigate } from "react-router";
-import { AppRoute } from "../../const";
+import Button from "../../components/UI/Button";
+import Container from "../../components/UI/Container";
+import { AppRoute, Theme } from "../../const";
+import { Title } from "./Welcome.styles";
 
 const Welcome:FC  = () => {
   const navigate = useNavigate();
@@ -9,15 +12,12 @@ const Welcome:FC  = () => {
     navigate(`main/${AppRoute.CHARACTERS}`);
   };
 
-
   return (
-    <>
-      <h1>Breaking bad info</h1>
-      
-      <button onClick={clickHandler}>
-          Let's go!
-      </button>
-    </>
+      <Container flex>
+        <Title>Breaking bad info</Title>
+
+        <Button onClick={clickHandler} theme={Theme.dark}>Let's go!</Button>
+      </Container>
   );
 }
 
