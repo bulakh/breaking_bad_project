@@ -7,10 +7,10 @@ interface EpisodeItemProps {
 
 const EpisodeItem: FC<EpisodeItemProps> = ({episode}) => {
   return (
-    <div>
+    <li>
         <h2>{episode.episode_id}. {episode.title}</h2>
         Season: {episode.season}, episode {episode.episode}
-    </div>
+    </li>
   );
 }
 

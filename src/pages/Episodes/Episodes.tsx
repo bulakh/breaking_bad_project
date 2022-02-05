@@ -1,27 +1,36 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useEffect} from "react";
+import { observer } from "mobx-react";
 import EpisodeItem from "../../components/EpisodeItem";
 import List from "../../components/UI/List";
-import { fetchEpisodes } from "../../hooks/useFetch";
+import storeApp from "../../store/storeApp";
 import { IEpisode } from "../../types/types";
+import Container from "../../components/UI/Container";
+import PageTitle from "../../components/UI/PageTitle";
+import Spin from "../../components/Spin";
 
 const Episodes: FC = () => {
-
-  const [episodes, setEpisodes] = useState<IEpisode[]>([]);
+  const {episodes, setEpisodes, isLoading} = storeApp;
 
   useEffect(() => {
-    fetchEpisodes(setEpisodes);
-  }, [])
+    if (episodes.length === 0) {
+      setEpisodes();
+    }
+  }, [episodes, setEpisodes]);
+
+
 
   return (
-    <>
-      <h1>Episodes</h1>
+    <Container>
+      <PageTitle>Episodes</PageTitle>
+
+      <Spin isLoading={isLoading} />
 
       <List
-        items={episodes} 
+        items={episodes}
         renderItem={(episode: IEpisode) => <EpisodeItem episode={episode} key={episode.episode_id}/>}
       />
-    </>
+    </Container>
   );
 }
 
-export default Episodes;
+export default observer(Episodes);

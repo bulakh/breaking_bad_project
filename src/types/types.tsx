@@ -8,7 +8,7 @@ export interface ICharacter {
     appearance: number[];
     nickname: string;
     portrayed: string;
-}
+};
 
 export interface IEpisode {
     episode_id: number;
@@ -17,4 +17,22 @@ export interface IEpisode {
     episode: number;
     air_date: number;
     characters: string[];
-}
+};
+
+export interface IQuote {
+    quote_id: number,
+    quote: string,
+    author: string,
+    series: string,
+};
+
+export interface IDeath {
+    death_id: number,
+    death: string,
+    cause: string,
+    responsible: string,
+    episode: number,
+    last_words: string,
+    number_of_deaths: number,
+    season: number,
+};

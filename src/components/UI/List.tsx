@@ -1,23 +1,25 @@
-import React, {ReactNode} from "react";
+import React, {ElementType, ReactNode} from "react";
+import styled from "styled-components";
 
 interface ListProps<T> {
-    flex?: boolean;
     items: T[];
     renderItem: (item: T) => ReactNode;
+    as?: ElementType | keyof JSX.IntrinsicElements;
 }
 
-export default  function List<T>(props: ListProps<T>) {
+const StyledList = styled.ul``
 
-    return (
-        <>
-            {props.flex 
-                ? <div style={{display:'flex', flexWrap: 'wrap'}}>
-                    {props.items.map(props.renderItem)}
-                </div>
-                : <div>
-                    {props.items.map(props.renderItem)}
-                </div>
-            }
-        </>
-    )
+const List = <T,>({
+    items,
+    renderItem,
+    ...props
+  }: ListProps<T>) => {
+
+  return (
+    <StyledList {...props}>
+      {items.map(renderItem)}
+    </StyledList>
+  );
 }
+
+export default List;

@@ -1,6 +1,9 @@
 import React, {FC, useEffect, useState} from "react";
 import { useParams } from "react-router";
-import { fetchCharacter } from "../../hooks/useFetch";
+import { fetchData } from "../../api/api";
+import Container from "../../components/UI/Container";
+import PageTitle from "../../components/UI/PageTitle";
+import { Url } from "../../const";
 import { ICharacter } from "../../types/types";
 
 
@@ -10,15 +13,19 @@ const Character: FC = () => {
   const [character, setCharacter] = useState<ICharacter | null>(null);
 
   useEffect(() => {
-    fetchCharacter(setCharacter, id);
+    async function fetchCharacter() {
+      const result = await fetchData<ICharacter[]>(`${Url.CHARACTERS}/${id}`);
+      if (result) {
+        setCharacter(result[0]);
+      }
+    }
+    fetchCharacter();
   }, [id]);
-  
+
 
   return (
-    <>
-      <h1>Character</h1>
-
-      Page of Character {id}
+    <Container>
+      <PageTitle>Character</PageTitle>
 
       {character && <div>
           <img style={{width: '500px'}} src={character.img} alt={character.name} />
@@ -27,7 +34,7 @@ const Character: FC = () => {
           <p>{character.nickname}</p>
         </div>
       }
-    </>
+    </Container>
   );
 }
 

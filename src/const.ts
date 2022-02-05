@@ -5,9 +5,17 @@ export const AppRoute = {
     CHARACTER: 'characters/:id',
     EPISODES: 'episodes',
     QUOTES: 'quotes',
-    DEATHES: 'deathes'
+    DEATHS: 'deaths'
 }
 
-export const URL_CHARACTERS = 'https://www.breakingbadapi.com/api/characters';
-export const URL_CHARACTER = 'https://www.breakingbadapi.com/api/characters/';
-export const URL_EPISODES = 'https://www.breakingbadapi.com/api/episodes';
+export const enum Url {
+    CHARACTERS = 'https://www.breakingbadapi.com/api/characters',
+    EPISODES = 'https://www.breakingbadapi.com/api/episodes',
+    QUOTES  = 'https://www.breakingbadapi.com/api/quotes',
+    DEATHS = 'https://www.breakingbadapi.com/api/deaths',
+}
+
+export const enum Theme {
+  light = 'light',
+  dark = 'dark',
+}

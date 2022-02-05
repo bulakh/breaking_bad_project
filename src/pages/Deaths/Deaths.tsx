@@ -1,37 +1,36 @@
 import React, {FC, useEffect} from "react";
 import { observer } from "mobx-react";
-import QuoteItem from "../../components/QuoteItem";
+import DeathItem from "../../components/DeathItem";
 import List from "../../components/UI/List";
-import { IQuote } from "../../types/types";
 import storeApp from "../../store/storeApp";
+import { IDeath } from "../../types/types";
 import Container from "../../components/UI/Container";
 import PageTitle from "../../components/UI/PageTitle";
 import Spin from "../../components/Spin";
 
-const Quotes: FC = () => {
+const Deaths: FC = () => {
 
-  const {quotes, setQuotes, isLoading} = storeApp;
+  const {deaths, setDeaths, isLoading} = storeApp;
 
   useEffect(() => {
-    if (quotes.length === 0) {
-      setQuotes();
+    if (deaths.length === 0) {
+      setDeaths();
     }
-  }, [quotes, setQuotes]);
-
+  }, [deaths, setDeaths]);
 
 
   return (
     <Container>
-      <PageTitle>Quotes</PageTitle>
+      <PageTitle>Deathes</PageTitle>
 
       <Spin isLoading={isLoading} />
 
       <List
-        items={quotes}
-        renderItem={(quote: IQuote) => <QuoteItem quote={quote} key={quote.quote_id}/>}
+        items={deaths}
+        renderItem={(death: IDeath) => <DeathItem death={death} key={death.death_id}/>}
       />
     </Container>
   );
 }
 
-export default observer(Quotes);
+export default observer(Deaths);
