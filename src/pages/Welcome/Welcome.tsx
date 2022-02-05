@@ -13,14 +13,14 @@ const Welcome:FC  = () => {
   };
 
   return (
-      <Container flex center all>
-        <Container>
-          <Title>Breaking bad</Title>
-          <SubTitle>info</SubTitle>
-        </Container>
-
-        <Button onClick={clickHandler}>Let's go!</Button>
+    <Container flex center widthAll heightAll>
+      <Container>
+        <Title>Breaking bad</Title>
+        <SubTitle>info</SubTitle>
       </Container>
+
+      <Button onClick={clickHandler}>Let's go!</Button>
+    </Container>
   );
 }
 

@@ -5,6 +5,8 @@ import List from "../../components/UI/List";
 import storeApp from "../../store/storeApp";
 import { IDeath } from "../../types/types";
 import Container from "../../components/UI/Container";
+import PageTitle from "../../components/UI/PageTitle";
+import Spin from "../../components/Spin";
 
 const Deaths: FC = () => {
 
@@ -17,14 +19,11 @@ const Deaths: FC = () => {
   }, [deaths, setDeaths]);
 
 
-
-  if (isLoading) {
-    return <h2>Loading...</h2>
-  }
-
   return (
     <Container>
-      <h1>Deathes</h1>
+      <PageTitle>Deathes</PageTitle>
+
+      <Spin isLoading={isLoading} />
 
       <List
         items={deaths}

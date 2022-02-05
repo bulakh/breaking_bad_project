@@ -1,10 +1,24 @@
 import React, {FC} from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { ICharacter } from "../types/types";
 
 interface CharacterItemProps {
     character: ICharacter;
 }
+
+const StyledItem = styled.li`
+  width: 214px;
+  height: 315px;
+
+  cursor: pointer;
+`
+
+const StyledImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
 
 const CharacterItem: FC<CharacterItemProps> = ({character}) => {
   const navigate = useNavigate();
@@ -14,12 +28,12 @@ const CharacterItem: FC<CharacterItemProps> = ({character}) => {
   };
 
   return (
-    <div onClick={clickHandler} style={{width: '100px', border: '1px solid black', margin: '10px'}}>
-      <img style={{width: '100px'}} src={character.img} alt={character.name} />
+    <StyledItem onClick={clickHandler}>
+      <StyledImg src={character.img} alt={character.name} />
 
-      <p>{character.char_id}. {character.name}</p>
-    </div>
-    
+      {/* <p>{character.char_id}. {character.name}</p> */}
+    </StyledItem>
+
   );
 }
 

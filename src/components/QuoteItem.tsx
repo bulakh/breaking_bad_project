@@ -8,10 +8,10 @@ interface QuoteItemProps {
 
 const QuoteItem: FC<QuoteItemProps> = ({quote}) => {
   return (
-    <div>
+    <li>
         <h3 style={{marginBottom: '0'}}><i>{quote.quote}</i></h3>
         {quote.author}
-    </div>
+    </li>
   );
 }
 

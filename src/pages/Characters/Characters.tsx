@@ -1,12 +1,13 @@
 import React, {ChangeEvent, FC, useEffect, useState} from "react";
 import { observer } from "mobx-react";
 import CharacterItem from "../../components/CharacterItem";
-import List from "../../components/UI/List";
 import { findCharacter } from "../../hooks/useFilter";
 import storeApp from "../../store/storeApp";
 import { ICharacter } from "../../types/types";
-import Container from "../../components/UI/Container";
 import PageTitle from "../../components/UI/PageTitle";
+import Spin from "../../components/Spin";
+import { CharactersContainer, CharactersInput, CharactersList } from "./Characters.styles";
+import List from "../../components/UI/List";
 
 
 const Characters: FC = () => {
@@ -27,23 +28,25 @@ const Characters: FC = () => {
   const filteredCharacters = findCharacter<ICharacter>(find, characters);
 
 
-
-  if (isLoading) {
-    return <h2>Loading...</h2>
-  }
-
   return (
-    <Container>
-      <PageTitle>Characters</PageTitle>
+    <CharactersContainer flex column>
+      <PageTitle hide>Characters</PageTitle>
 
-      <input onChange={changeInputHandler} type="text" value={find} placeholder="Search character..."/>
+      {!isLoading &&
+        <CharactersInput onChange={changeInputHandler} value={find} placeholder="Say my name..."/>
+      }
+
+      <Spin isLoading={isLoading} />
+
 
       <List
-        flex
+        as={CharactersList}
         items={find === '' ? characters : filteredCharacters}
         renderItem={(character: ICharacter) => <CharacterItem character={character} key={character.char_id} />}
       />
-    </Container>
+
+
+    </CharactersContainer>
   );
 };
 

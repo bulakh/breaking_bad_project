@@ -5,6 +5,8 @@ import List from "../../components/UI/List";
 import { IQuote } from "../../types/types";
 import storeApp from "../../store/storeApp";
 import Container from "../../components/UI/Container";
+import PageTitle from "../../components/UI/PageTitle";
+import Spin from "../../components/Spin";
 
 const Quotes: FC = () => {
 
@@ -18,13 +20,11 @@ const Quotes: FC = () => {
 
 
 
-  if (isLoading) {
-    return <h2>Loading...</h2>
-  }
-
   return (
     <Container>
-      <h1>Quotes</h1>
+      <PageTitle>Quotes</PageTitle>
+
+      <Spin isLoading={isLoading} />
 
       <List
         items={quotes}

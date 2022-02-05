@@ -1,20 +1,25 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Colors } from "../../styles/variables";
+import { Colors, Hidden } from "../../styles/variables";
+
+interface Props {
+  hide?: boolean;
+}
 
 
-
-const StyledTitle = styled.h1`
+const StyledTitle = styled.h1<Props>`
+  ${({hide}) => hide && Hidden}
   color: ${Colors.white};
   font-size: 30px;
 `
 
-const PageTitle: FC = ({
+const PageTitle: FC<Props> = ({
+    hide,
     children
   }) => {
 
   return (
-    <StyledTitle>{children}</StyledTitle>
+    <StyledTitle hide={hide}>{children}</StyledTitle>
   );
 }
 

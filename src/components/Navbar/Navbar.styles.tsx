@@ -1,22 +1,17 @@
-import styled, { css } from "styled-components"
-import { Colors, Fonts } from "../../styles/variables"
+import styled from "styled-components"
+import { Colors } from "../../styles/variables"
+import Container from "../UI/Container"
 
 
-const General = css`
-  color: ${Colors.white};
-
-  font-family: ${Fonts.cooper};
+export const NavContainer = styled(Container)`
+  background: ${Colors.bgTransparent};
 `
 
 export const NavList = styled.ul`
-  margin: 200px 20px;
+  margin: 200px 100px;
+
 `
 
 export const NavItem = styled.li`
-  margin: 20px;
-
-  & a {
-    color: ${Colors.white};
-  }
+  margin-bottom: 30px;
 `
-

@@ -4,14 +4,30 @@ import styled, { css } from "styled-components";
 
 interface Props {
   flex?: boolean;
+  column?: boolean;
+  wrap?: boolean;
   center?: boolean;
-  all?: boolean;
+  between?: boolean;
+  widthAll?: boolean;
+  heightAll?: boolean;
 }
 
 
 const StyledContainer = styled.div<Props>`
 
   display: ${({flex}) => flex ? 'flex' : 'block'};
+
+  ${({column}) => column && css`
+    flex-direction: column;`
+  };
+
+  ${({wrap}) => wrap && css`
+    flex-wrap: wrap;`
+  };
+
+  ${({between}) => between && css`
+    justify-content: space-between;`
+  };
 
   ${({center}) => center && css`
     flex-direction: column;
@@ -20,17 +36,24 @@ const StyledContainer = styled.div<Props>`
   };
 
 
-  ${({all}) => all && css`
-    width: 100vw;
-    height: 100vh;`
+  ${({widthAll}) => widthAll && css`
+    width: 100vw;`
+  }
+
+  ${({heightAll}) => heightAll && css`
+    min-height: 100vh;`
   }
 
 `
 
 const Container: FC<Props> = ({
     flex,
+    column,
+    wrap,
+    between,
     center,
-    all,
+    widthAll,
+    heightAll,
     children,
     ...props
   }) => {
@@ -38,8 +61,12 @@ const Container: FC<Props> = ({
   return (
     <StyledContainer
       flex={flex}
+      column={column}
+      wrap={wrap}
+      between={between}
       center={center}
-      all={all}
+      widthAll={widthAll}
+      heightAll={heightAll}
       {...props}
     >
       {children}

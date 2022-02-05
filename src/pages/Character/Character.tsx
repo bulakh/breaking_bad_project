@@ -2,6 +2,7 @@ import React, {FC, useEffect, useState} from "react";
 import { useParams } from "react-router";
 import { fetchData } from "../../api/api";
 import Container from "../../components/UI/Container";
+import PageTitle from "../../components/UI/PageTitle";
 import { Url } from "../../const";
 import { ICharacter } from "../../types/types";
 
@@ -24,9 +25,7 @@ const Character: FC = () => {
 
   return (
     <Container>
-      <h1>Character</h1>
-
-      Page of Character {id}
+      <PageTitle>Character</PageTitle>
 
       {character && <div>
           <img style={{width: '500px'}} src={character.img} alt={character.name} />

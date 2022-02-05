@@ -1,31 +1,34 @@
 import React, {FC} from "react";
-import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
-import { NavItem, NavList } from "./Navbar.styles";
+import CustomLink from "./CustomLink";
+import { NavContainer, NavItem, NavList } from "./Navbar.styles";
+
+
 
 
 
 const Navbar: FC = () => {
 
-
   return (
-    <NavList>
-      <NavItem>
-        <Link to={AppRoute.WELCOME}>Welcome</Link>
-      </NavItem>
-      <NavItem>
-        <Link to={AppRoute.CHARACTERS}>Characters</Link>
-      </NavItem>
-      <NavItem>
-        <Link to={AppRoute.EPISODES}>Episodes</Link>
-      </NavItem>
-      <NavItem>
-        <Link to={AppRoute.QUOTES}>Quotes</Link>
-      </NavItem>
-      <NavItem>
-        <Link to={AppRoute.DEATHS}>Deathes</Link>
-      </NavItem>
-    </NavList>
+    <NavContainer>
+      <NavList>
+        <NavItem>
+          <CustomLink to={AppRoute.WELCOME}>Welcome</CustomLink>
+        </NavItem>
+        <NavItem>
+          <CustomLink to={AppRoute.CHARACTERS}>Characters</CustomLink>
+        </NavItem>
+        <NavItem>
+          <CustomLink to={AppRoute.EPISODES}>Episodes</CustomLink>
+        </NavItem>
+        <NavItem>
+          <CustomLink to={AppRoute.QUOTES}>Quotes</CustomLink>
+        </NavItem>
+        <NavItem>
+          <CustomLink to={AppRoute.DEATHS}>Deathes</CustomLink>
+        </NavItem>
+      </NavList>
+    </NavContainer>
   );
 }
 

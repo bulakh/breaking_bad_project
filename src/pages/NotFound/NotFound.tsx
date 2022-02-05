@@ -2,6 +2,7 @@ import React, {FC} from "react";
 import { useNavigate } from "react-router";
 import Button from "../../components/UI/Button";
 import Container from "../../components/UI/Container";
+import PageTitle from "../../components/UI/PageTitle";
 import { AppRoute } from "../../const";
 
 const NotFound: FC = () => {
@@ -12,8 +13,8 @@ const NotFound: FC = () => {
   }
 
   return (
-    <Container flex center all>
-      <h1>404 Not found page!</h1>
+    <Container flex center widthAll heightAll>
+      <PageTitle>404 Not found page!</PageTitle>
 
       <Button onClick={clickHandler}>
           Return to main
