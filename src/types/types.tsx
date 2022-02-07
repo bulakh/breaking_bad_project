@@ -8,6 +8,7 @@ export interface ICharacter {
     appearance: number[];
     nickname: string;
     portrayed: string;
+    category: string;
 };
 
 export interface IEpisode {
