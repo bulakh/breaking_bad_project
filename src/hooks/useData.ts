@@ -5,5 +5,5 @@ export const getData = (airData: number):string => {
 
   const dateCounts = String(airData).split('-').map(date => Number(date));
   const [month, day, year] = dateCounts;
-  return `${day} ${monthNames[month]} ${year}`
+  return `${day} ${monthNames[month]} ${year}`;
 }

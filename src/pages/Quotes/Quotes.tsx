@@ -4,9 +4,9 @@ import QuoteItem from "../../components/QuoteItem";
 import List from "../../components/UI/List";
 import { IQuote } from "../../types/types";
 import storeApp from "../../store/storeApp";
-import Container from "../../components/UI/Container";
 import PageTitle from "../../components/UI/PageTitle";
 import Spin from "../../components/Spin";
+import { QuotesContainer } from "./Quotes.styles";
 
 const Quotes: FC = () => {
 
@@ -21,7 +21,7 @@ const Quotes: FC = () => {
 
 
   return (
-    <Container>
+    <QuotesContainer>
       <PageTitle>Quotes</PageTitle>
 
       <Spin isLoading={isLoading} />
@@ -30,7 +30,7 @@ const Quotes: FC = () => {
         items={quotes}
         renderItem={(quote: IQuote) => <QuoteItem quote={quote} key={quote.quote_id}/>}
       />
-    </Container>
+    </QuotesContainer>
   );
 }
 
