@@ -4,9 +4,9 @@ import EpisodeItem from "../../components/EpisodeItem";
 import List from "../../components/UI/List";
 import storeApp from "../../store/storeApp";
 import { IEpisode } from "../../types/types";
-import Container from "../../components/UI/Container";
 import PageTitle from "../../components/UI/PageTitle";
 import Spin from "../../components/Spin";
+import { EpisodesContainer, EpisodesList } from "./Episodes.styles";
 
 const Episodes: FC = () => {
   const {episodes, setEpisodes, isLoading} = storeApp;
@@ -20,16 +20,17 @@ const Episodes: FC = () => {
 
 
   return (
-    <Container>
+    <EpisodesContainer>
       <PageTitle>Episodes</PageTitle>
 
       <Spin isLoading={isLoading} />
 
       <List
+        as={EpisodesList}
         items={episodes}
         renderItem={(episode: IEpisode) => <EpisodeItem episode={episode} key={episode.episode_id}/>}
       />
-    </Container>
+    </EpisodesContainer>
   );
 }
 

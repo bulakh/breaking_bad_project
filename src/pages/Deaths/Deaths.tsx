@@ -4,9 +4,9 @@ import DeathItem from "../../components/DeathItem";
 import List from "../../components/UI/List";
 import storeApp from "../../store/storeApp";
 import { IDeath } from "../../types/types";
-import Container from "../../components/UI/Container";
 import PageTitle from "../../components/UI/PageTitle";
 import Spin from "../../components/Spin";
+import { DeathsContainer } from "./Deaths.styles";
 
 const Deaths: FC = () => {
 
@@ -18,18 +18,19 @@ const Deaths: FC = () => {
     }
   }, [deaths, setDeaths]);
 
+  const sortedDeaths = deaths.slice().sort((a: IDeath, b: IDeath ) => (a.death_id - b.death_id));
 
   return (
-    <Container>
+    <DeathsContainer>
       <PageTitle>Deathes</PageTitle>
 
       <Spin isLoading={isLoading} />
 
       <List
-        items={deaths}
+        items={sortedDeaths}
         renderItem={(death: IDeath) => <DeathItem death={death} key={death.death_id}/>}
       />
-    </Container>
+    </DeathsContainer>
   );
 }
 

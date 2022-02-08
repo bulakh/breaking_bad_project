@@ -6,7 +6,7 @@ export const enum Colors {
   backgroundLight = `linear-gradient(180deg, #FCFCFC 32.29%, #39DB49 87.5%)`,
   white = '#FFFFFF',
   bgTransparent = 'rgba(151, 215, 157, 0.25)',
-
+  primary = '#EB3670',
 }
 
 export const enum Fonts {

@@ -8,6 +8,7 @@ export interface ICharacter {
     appearance: number[];
     nickname: string;
     portrayed: string;
+    category: string;
 };
 
 export interface IEpisode {
@@ -17,6 +18,7 @@ export interface IEpisode {
     episode: number;
     air_date: number;
     characters: string[];
+    series: string;
 };
 
 export interface IQuote {

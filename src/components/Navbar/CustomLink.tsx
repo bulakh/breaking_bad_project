@@ -2,40 +2,47 @@ import { Link, LinkProps, useMatch, useResolvedPath } from "react-router-dom";
 import styled from "styled-components";
 import { Colors } from "../../styles/variables";
 
-const StyledLink = styled(Link)`
-    display: inline-block;
-    position: relative;
+interface Props {
+  match?: object | null;
+}
 
-    font-size: 20px;
-    color: ${Colors.white};
+const StyledLink = styled(Link)<Props>`
+  display: inline-block;
+  position: relative;
 
-    &:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: ${Colors.white};
-      transform-origin: bottom right;
-      transition: transform 0.3s ease-out;
-    }
+  font-size: 20px;
+  color: ${Colors.white};
 
-    &:hover:after{
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-  `
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: ${Colors.white};
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+    ${({match}) => match && 'transform: scaleX(1)'}
+  }
 
-const CustomLink = ({ children, to, ...props }: LinkProps) => {
+  &:hover:after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+`
 
-  let resolved = useResolvedPath(to);
-  let match = useMatch({ path: resolved.pathname, end: true });
+
+
+const CustomLink = ({ children, to, ...props }:LinkProps) => {
+
+  const resolved = useResolvedPath(to);
+  const match = useMatch({ path: resolved.pathname, end: true });
 
   return (
     <StyledLink
-      style={{ textDecoration: match ? 'underline' : 'none' }}
+      match={match}
       to={to}
       {...props}
     >
