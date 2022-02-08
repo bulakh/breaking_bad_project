@@ -18,6 +18,7 @@ export interface IEpisode {
     episode: number;
     air_date: number;
     characters: string[];
+    series: string;
 };
 
 export interface IQuote {

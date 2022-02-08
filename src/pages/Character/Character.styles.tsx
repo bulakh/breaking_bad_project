@@ -4,7 +4,7 @@ import { Colors, Fonts } from "../../styles/variables"
 
 export const CharacterContainer = styled(Container)`
   color: ${Colors.white};
-  padding: 50px;
+  padding: 80px;
 `
 
 export const CharacterWrap = styled(Container)`
